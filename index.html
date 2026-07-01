@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fire Fighting SCA</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#eef3f7;
+    user-select:none;
+  justify-content:center;   /* Horizontal center */
+    align-items:center;       /* Vertical center */
+}
+
+/*==========================
+        START PAGE
+==========================*/
+
+.main{
+
+    min-height:100vh;
+
+    background:url("plant.JPG") center center/cover no-repeat;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+}
+
+.front-page{
+
+     background: rgba(144, 238, 144, 0.2);
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 700px;
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 0 25px rgba(0,0,0,0.4);
+
+}
+
+.front-page h1{
+
+    text-align:center;
+
+    color:#FFFACD;
+
+    margin-bottom:20px;
+
+}
+
+.instructions{
+
+ background: rgba(143,179,76,0.8);
+      padding: 18px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 1px solid rgba(0,0,0,0.06);
+
+}
+
+.instructions h2{
+
+    margin-bottom:15px;
+
+}
+
+.instructions p{
+
+      margin: 10px 0;
+      line-height: 1.5;
+      font-size: 15px;
+      color:black
+
+;
+
+}
+
+label{
+
+    font-weight:bold;
+
+}
+
+input{
+
+    width:100%;
+
+    padding:10px;
+
+    margin-top:5px;
+
+    margin-bottom:18px;
+
+    border:1px solid #ccc;
+
+    border-radius:6px;
+
+    font-size:15px;
+
+}
+
+/*==========================
+        BUTTONS
+==========================*/
+
+.start-button,
+.recover-button,
+.submit-btn{
+
+    width:100%;
+
+    padding:14px;
+
+    font-size:16px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+.start-button{
+
+    background:#0ea5e9;
+
+    color:white;
+
+}
+
+.start-button:hover{
+
+    background:#0284c7;
+
+}
+
+.recover-button{
+
+    background:#f59e0b;
+
+    color:white;
+
+    margin-top:15px;
+
+}
+
+.recover-button:hover{
+
+    background:#d97706;
+
+}
+
+.submit-btn{
+
+    background:#16a34a;
+
+    color:white;
+
+    margin-top:25px;
+
+}
+
+.submit-btn:hover{
+
+    background:#15803d;
+
+}
+
+/*==========================
+        TEST PAGE
+==========================*/
+.test{
+
+    min-height:100vh;
+
+    background:url("fire6.JPG") center center/cover no-repeat;
+background-size:cover;
+    background-attachment:fixed;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+}
+
+.container{
+
+     background: rgba(143,179,76,0.4);
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 850px;
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 0 25px rgba(0,0,0,0.4);
+text-align:left;
+
+
+}
+
+.timer{
+
+    color:red;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    margin:20px 0;
+
+}
+
+.question{
+
+   background: rgba(255,0,0, 0.1);
+
+   border: 1px solid rgba(255,0,0,0.08);
+
+    border-radius:8px;
+
+    padding:15px;
+
+    margin-bottom:20px;
+
+}
+
+.question p{
+
+    font-weight:bold;
+
+    margin-bottom:10px;
+
+}
+
+.question label{
+
+    display:block;
+
+    border:2px solid #d1d5db;
+
+    border-radius:8px;
+
+    padding:15px 18px;
+
+    margin-bottom:12px;
+
+    background:white;
+
+    cursor:pointer;
+
+    transition:.25s ease;
+
+    user-select:none;
+}
+
+/* Hide the radio button completely */
+
+.question input[type="radio"]{
+
+    display:none;
+
+}
+
+/* Hover effect */
+
+/* Hover effect */
+
+.question label:hover{
+
+    border-color:#dc2626;      /* Red border */
+
+    background:#fef2f2;        /* Light red background */
+
+    transform:translateY(-1px);
+
+}
+
+/* Selected option */
+
+.question label.selected{
+
+    background:#dc2626;        /* Red background */
+
+    color:white;
+
+    border-color:#b91c1c;      /* Dark red border */
+
+    font-weight:bold;
+
+    box-shadow:0 4px 12px rgba(220,38,38,.35); /* Red shadow */
+
+}
+
+/*==========================
+        RESULT
+==========================*/
+
+#resultPage{
+
+    display:none;
+
+    text-align:center;
+
+}
+
+.score{
+
+    display:inline-block;
+
+    background:#16a34a;
+
+    color:white;
+
+    padding:15px 25px;
+
+    border-radius:8px;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    margin-top:20px;
+
+}
+.result-wrapper{
+  
+        max-width:700px;
+ margin:20px auto 0;
+    padding:18px;
+    text-align:center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= START PAGE ================= -->
+
+<div class="main" id="startPage">
+
+<div class="front-page">
+
+<h1>Fire Fighting SCA</h1>
+
+<div class="instructions">
+
+<h2>Instructions</h2>
+
+<p>• Total Time: <strong>30 Minutes</strong></p>
+
+<p>• Camera permission is mandatory.</p>
+
+<p>• Fullscreen mode is mandatory.</p>
+
+<p>• Pressing ESC or exiting Fullscreen will automatically submit the test.</p>
+
+<p>• Stable internet connection is recommended.</p>
+
+<p>• Enter your details before starting.</p>
+
+<label>Name</label>
+<input id="username">
+
+<label>Email</label>
+<input
+id="userEmail"
+type="email"
+placeholder="example@piogcl.com">
+
+<label>Designation</label>
+<input id="designation">
+
+</div>
+
+<button
+class="start-button"
+onclick="startTest()">
+
+Start Test
+
+</button>
+
+<button
+class="recover-button"
+onclick="recoverAttempt()">
+
+Recover Previous Attempt
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= TEST PAGE ================= -->
+<div class="test" id="testWrapper" style="display:none;">
+<div
+class="container"
+>
+
+<h1>Fire Fighting SCA</h1>
+
+<h3 class="timer">
+
+Time Left: 30:00
+
+</h3>
+
+<!-- ================= DRIVING SAFETY ================= -->
+
+
+<div class="question">
+
+<p>
+1. What are the three elements of the fire triangle?
+</p>
+
+<label>
+<input type="radio" name="q1" value="Water, Fuel, Air">
+Water, Fuel, Air
+</label>
+
+<label>
+<input type="radio" name="q1" value="Fuel, Oxygen, Heat" data-correct>
+Fuel, Oxygen, Heat
+</label>
+
+<label>
+<input type="radio" name="q1" value="Heat, Smoke, Water">
+Heat, Smoke, Water
+</label>
+
+<label>
+<input type="radio" name="q1" value="Fuel, Gas, Steam">
+Fuel, Gas, Steam
+</label>
+
+</div>
+
+<div class="question">
+
+<p>
+2. Which class of fire involves ordinary combustible materials such as wood and paper?
+</p>
+
+<label>
+<input type="radio" name="q2" value="Class A" data-correct>
+Class A
+</label>
+
+<label>
+<input type="radio" name="q2" value="Class B">
+Class B
+</label>
+
+<label>
+<input type="radio" name="q2" value="Class C">
+Class C
+</label>
+
+<label>
+<input type="radio" name="q2" value="Class D">
+Class D
+</label>
+
+</div>
+
+<div class="question">
+
+<p>
+3. Which class of fire involves flammable liquids?
+</p>
+
+<label>
+<input type="radio" name="q3" value="Class A">
+Class A
+</label>
+
+<label>
+<input type="radio" name="q3" value="Class B" data-correct>
+Class B
+</label>
+
+<label>
+<input type="radio" name="q3" value="Class C">
+Class C
+</label>
+
+<label>
+<input type="radio" name="q3" value="Class F">
+Class F
+</label>
+
+</div>
+
+<div class="question">
+
+<p>
+4. Which extinguisher is commonly used for electrical fires?
+</p>
+
+<label>
+<input type="radio" name="q4" value="Water">
+Water
+</label>
+
+<label>
+<input type="radio" name="q4" value="Foam">
+Foam
+</label>
+
+<label>
+<input type="radio" name="q4" value="CO₂" data-correct>
+CO₂
+</label>
+
+<label>
+<input type="radio" name="q4" value="Sand">
+Sand
+</label>
+
+</div>
+
+<div class="question">
+
+<p>
+5. Which extinguisher should NEVER be used on live electrical equipment?
+</p>
+
+<label>
+<input type="radio" name="q5" value="CO₂">
+CO₂
+</label>
+
+<label>
+<input type="radio" name="q5" value="Dry Chemical Powder">
+Dry Chemical Powder
+</label>
+
+<label>
+<input type="radio" name="q5" value="Water" data-correct>
+Water
+</label>
+
+<label>
+<input type="radio" name="q5" value="Clean Agent">
+Clean Agent
+</label>
+
+</div>
+
+<div class="question">
+
+<p>
+6. What does PASS stand for when operating a fire extinguisher?
+</p>
+
+<label>
+<input type="radio" name="q6" value="Pull, Aim, Squeeze, Sweep" data-correct>
+Pull, Aim, Squeeze, Sweep
+</label>
+
+<label>
+<input type="radio" name="q6" value="Push, Aim, Spray, Stop">
+Push, Aim, Spray, Stop
+</label>
+
+<label>
+<input type="radio" name="q6" value="Pull, Activate, Spray, Sweep">
+Pull, Activate, Spray, Sweep
+</label>
+
+<label>
+<input type="radio" name="q6" value="Press, Aim, Squeeze, Stop">
+Press, Aim, Squeeze, Stop
+</label>
+
+</div>
+
+<div class="question">
+
+<p>
+7. Where should you aim the nozzle of a fire extinguisher?
+</p>
+
+<label>
+<input type="radio" name="q7" value="At the flames">
+At the flames
+</label>
+
+<label>
+<input type="radio" name="q7" value="At the smoke">
+At the smoke
+</label>
+
+<label>
+<input type="radio" name="q7" value="At the base of the fire" data-correct>
+At the base of the fire
+</label>
+
+<label>
+<input type="radio" name="q7" value="Above the fire">
+Above the fire
+</label>
+
+</div>
+
+<div class="question">
+
+<p>
+8. What is the first action after discovering a fire?
+</p>
+
+<label>
+<input type="radio" name="q8" value="Fight the fire immediately">
+Fight the fire immediately
+</label>
+
+<label>
+<input type="radio" name="q8" value="Raise the alarm" data-correct>
+Raise the alarm
+</label>
+
+<label>
+<input type="radio" name="q8" value="Open all doors">
+Open all doors
+</label>
+
+<label>
+<input type="radio" name="q8" value="Turn off lights">
+Turn off lights
+</label>
+
+</div>
+
+<div class="question">
+
+<p>
+9. A fire extinguisher should only be used if:
+</p>
+
+<label>
+<input type="radio" name="q9" value="The fire is small and you are trained" data-correct>
+The fire is small and you are trained
+</label>
+
+<label>
+<input type="radio" name="q9" value="The fire has spread throughout the building">
+The fire has spread throughout the building
+</label>
+
+<label>
+<input type="radio" name="q9" value="You are alone">
+You are alone
+</label>
+
+<label>
+<input type="radio" name="q9" value="There is heavy smoke">
+There is heavy smoke
+</label>
+
+</div>
+
+<div class="question">
+
+<p>
+10. What should you do if the fire cannot be controlled?
+</p>
+
+<label>
+<input type="radio" name="q10" value="Continue fighting">
+Continue fighting
+</label>
+
+<label>
+<input type="radio" name="q10" value="Throw water on it">
+Throw water on it
+</label>
+
+<label>
+<input type="radio" name="q10" value="Evacuate immediately" data-correct>
+Evacuate immediately
+</label>
+
+<label>
+<input type="radio" name="q10" value="Hide inside the room">
+Hide inside the room
+</label>
+
+</div>
+
+<div class="question">
+
+<p>
+11. Which fire extinguisher is suitable for Class A fires?
+</p>
+
+<label>
+<input type="radio" name="q11" value="Water" data-correct>
+Water
+</label>
+
+<label>
+<input type="radio" name="q11" value="CO₂">
+CO₂
+</label>
+
+<label>
+<input type="radio" name="q11" value="Dry Sand">
+Dry Sand
+</label>
+
+<label>
+<input type="radio" name="q11" value="Wet Blanket">
+Wet Blanket
+</label>
+
+</div>
+
+<div class="question">
+
+<p>
+12. Which fire class involves cooking oils and fats?
+</p>
+
+<label>
+<input type="radio" name="q12" value="Class C">
+Class C
+</label>
+
+<label>
+<input type="radio" name="q12" value="Class D">
+Class D
+</label>
+
+<label>
+<input type="radio" name="q12" value="Class F" data-correct>
+Class F
+</label>
+
+<label>
+<input type="radio" name="q12" value="Class B">
+Class B
+</label>
+
+</div>
+
+
+<div class="question">
+
+<p>
+13. Which fire extinguisher is most versatile and suitable for multiple fire classes?
+</p>
+
+<label>
+<input type="radio" name="q13" value="Water">
+Water
+</label>
+
+<label>
+<input type="radio" name="q13" value="Foam">
+Foam
+</label>
+
+<label>
+<input type="radio" name="q13" value="Dry Chemical Powder" data-correct>
+Dry Chemical Powder
+</label>
+
+<label>
+<input type="radio" name="q13" value="Wet Chemical">
+Wet Chemical
+</label>
+
+</div>
+
+<div class="question">
+
+<p>
+14. What color band identifies a CO₂ fire extinguisher?
+</p>
+
+<label>
+<input type="radio" name="q14" value="Red">
+Red
+</label>
+
+<label>
+<input type="radio" name="q14" value="Blue">
+Blue
+</label>
+
+<label>
+<input type="radio" name="q14" value="Black" data-correct>
+Black
+</label>
+
+<label>
+<input type="radio" name="q14" value="Cream">
+Cream
+</label>
+
+</div>
+
+<div class="question">
+
+<p>
+15. Why should you never touch the horn of a CO₂ extinguisher during discharge?
+</p>
+
+<label>
+<input type="radio" name="q15" value="It becomes extremely cold and can cause frostbite" data-correct>
+It becomes extremely cold and can cause frostbite
+</label>
+
+<label>
+<input type="radio" name="q15" value="It becomes hot">
+It becomes hot
+</label>
+
+<label>
+<input type="radio" name="q15" value="It leaks electricity">
+It leaks electricity
+</label>
+
+<label>
+<input type="radio" name="q15" value="It may explode">
+It may explode
+</label>
+
+</div>
+
+<div class="question">
+
+<p>
+16. What should you check before using a fire extinguisher?
+</p>
+
+<label>
+<input type="radio" name="q16" value="Pressure gauge and safety pin" data-correct>
+Pressure gauge and safety pin
+</label>
+
+<label>
+<input type="radio" name="q16" value="Company logo">
+Company logo
+</label>
+
+<label>
+<input type="radio" name="q16" value="Manufacturing color only">
+Manufacturing color only
+</label>
+
+<label>
+<input type="radio" name="q16" value="Weight only">
+Weight only
+</label>
+
+</div>
+
+<div class="question">
+
+<p>
+17. Which type of fire involves combustible metals?
+</p>
+
+<label>
+<input type="radio" name="q17" value="Class D" data-correct>
+Class D
+</label>
+
+<label>
+<input type="radio" name="q17" value="Class A">
+Class A
+</label>
+
+<label>
+<input type="radio" name="q17" value="Class B">
+Class B
+</label>
+
+<label>
+<input type="radio" name="q17" value="Class C">
+Class C
+</label>
+
+</div>
+
+
+
+<button
+class="submit-btn"
+onclick="submitTest()">
+
+Submit Test
+
+</button>
+
+</div>
+
+</div>
+<!-- ================= RESULT PAGE ================= -->
+
+<div class="result-wrapper" id="resultPage" style="display:none;">
+
+    <div class="container">
+
+        <h1>Thank You</h1>
+
+        <br>
+
+        <p>Your responses have been submitted successfully.</p>
+
+        <br>
+
+        <p>You may now close this window.</p>
+
+        <div id="scoreCard"></div>
+
+    </div>
+
+</div>
+<!-- Hidden Camera -->
+
+<video
+id="camera"
+autoplay
+muted
+playsinline
+style="display:none;">
+</video>
+
+<script>
+
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbymLfO4qyva68UtsbMFTvgQhrBA8pPXeaBW3m56fRpUvI1OBb3Ym_e_hz3tD8uDXL6e/exec";
+
+/* ================= STATE ================= */
+let examStarted = false;
+let alreadySubmitted = false;
+
+let cameraStream = null;
+let timerInterval = null;
+let snapInterval = null;
+
+let timeLeft = 30 * 60; // 30 minutes
+let snapshots = [];
+
+/* ================= START TEST ================= */
+async function startTest() {
+
+  const name = document.getElementById("username").value.trim();
+  const email = document.getElementById("userEmail").value.trim().toLowerCase();
+  const designation = document.getElementById("designation").value.trim();
+
+  if (!name || !email || !designation) {
+    alert("All fields are required.");
+    return;
+  }
+
+  if (!email.endsWith("@piogcl.com")) {
+    alert("Only @piogcl.com email allowed.");
+    return;
+  }
+
+  if (localStorage.getItem(email + "_submitted")) {
+    alert("This email already submitted the test.");
+    return;
+  }
+
+  localStorage.setItem("exam_user", JSON.stringify({ name, email, designation }));
+
+  /* ================= CAMERA ================= */
+  try {
+    cameraStream = await navigator.mediaDevices.getUserMedia({ video: true });
+    document.getElementById("camera").srcObject = cameraStream;
+const video = document.getElementById("camera");
+
+await new Promise(resolve => {
+    video.onloadedmetadata = () => {
+        video.play();
+        resolve();
+    };
+});
+  } catch {
+    alert("Camera permission is mandatory.");
+    return;
+  }
+
+  /* ================= UI SWITCH ================= */
+  document.getElementById("startPage").style.display = "none";
+  document.getElementById("testWrapper").style.display = "flex";
+
+ await enterFullscreen();
+  startTimer();
+  startAutoSave();
+  startSnapshots();
+
+  examStarted = true;
+}
+
+/* ================= FULLSCREEN ================= */
+async function enterFullscreen() {
+
+    try {
+        await document.documentElement.requestFullscreen();
+    } catch (err) {
+        alert("Fullscreen is required to start the assessment.");
+        throw err;
+    }
+
+    document.addEventListener("fullscreenchange", () => {
+        if (!document.fullscreenElement && !alreadySubmitted) {
+            submitTest();
+        }
+    });
+
+}
+
+/* ESC KEY */
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") submitTest();
+});
+
+/* ================= TIMER ================= */
+function startTimer() {
+  timerInterval = setInterval(() => {
+
+    timeLeft--;
+
+    const h = Math.floor(timeLeft / 3600);
+    const m = Math.floor((timeLeft % 3600) / 60);
+    const s = timeLeft % 60;
+
+    document.querySelector(".timer").innerText =
+      `Time Left: ${String(h).padStart(2,"0")}:` +
+      `${String(m).padStart(2,"0")}:` +
+      `${String(s).padStart(2,"0")}`;
+
+    if (timeLeft <= 0) submitTest();
+
+  }, 1000);
+}
+
+/* ================= AUTO SAVE ================= */
+/* ================= AUTO SAVE ================= */
+let autoSaveInterval = null;
+
+function startAutoSave(){
+
+    autoSaveInterval = setInterval(() =>{
+
+    const user = JSON.parse(localStorage.getItem("exam_user") || "{}");
+
+    if (!user.email) return;
+
+    const answers = {};
+
+    document.querySelectorAll("input[type=radio]:checked").forEach(r => {
+      answers[r.name] = r.value;
+    });
+
+    const payload = new URLSearchParams({
+
+      action: "autosave",
+
+      name: user.name,
+      email: user.email,
+      designation: user.designation,
+
+      answers: JSON.stringify(answers),
+
+      timeLeft: timeLeft,
+
+      lastSaved: new Date().toISOString()
+
+    });
+
+    fetch(WEB_APP_URL,{
+      method:"POST",
+      mode:"no-cors",
+      headers:{
+        "Content-Type":"application/x-www-form-urlencoded"
+      },
+      body:payload.toString()
+    });
+
+  },10000); // every 10 seconds
+
+}
+/* ================= RECOVER ================= */
+async function recoverAttempt() {
+
+  const email = document.getElementById("userEmail").value.trim().toLowerCase();
+
+const response = await fetch(
+    WEB_APP_URL +
+    "?action=recover&email=" +
+    encodeURIComponent(email)
+);
+
+const saved = await response.json();
+saved.answers = JSON.parse(saved.answers || "{}");
+
+if (
+    !saved ||
+    !saved.name ||
+    Object.keys(saved.answers).length === 0
+) {
+    alert("No saved attempt found.");
+    return;
+}
+const user = {
+    name: saved.name,
+    email: email,
+    designation: saved.designation
+};
+
+  // Restore answers temporarily
+  Object.keys(saved.answers || {}).forEach(q => {
+
+    const el = document.querySelector(
+      `input[name="${q}"][value="${saved.answers[q]}"]`
+    );
+
+   if(el){
+
+    el.checked = true;
+
+    el.dispatchEvent(new Event("change"));
+
+}
+  });
+
+  // Build question data
+  const questions = [];
+  const answers = [];
+  const correctAnswers = [];
+  const status = [];
+
+  document.querySelectorAll(".question").forEach(q => {
+
+    const selected =
+      q.querySelector("input[type=radio]:checked");
+
+    const correct =
+      q.querySelector("input[data-correct]");
+
+    questions.push(q.querySelector("p").innerText);
+
+    answers.push(
+      selected ? selected.value : "Not Answered"
+    );
+
+    correctAnswers.push(correct.value);
+
+    status.push(
+      selected && selected.hasAttribute("data-correct")
+      ? "Correct"
+      : "Wrong"
+    );
+
+  });
+
+  const score =
+    status.filter(x => x === "Correct").length;
+
+  const payload = new URLSearchParams({
+
+    name: user.name,
+    email: user.email,
+    designation: user.designation,
+
+    score,
+
+    snapshots: JSON.stringify([]),
+
+    questions: JSON.stringify(questions),
+    answers: JSON.stringify(answers),
+    correctAnswers: JSON.stringify(correctAnswers),
+    status: JSON.stringify(status),
+
+    timestamp: new Date().toISOString()
+
+  });
+
+  await fetch(WEB_APP_URL,{
+    method:"POST",
+    mode:"no-cors",
+    headers:{
+      "Content-Type":"application/x-www-form-urlencoded"
+    },
+    body:payload.toString()
+  });
+
+  alert("Result resubmitted successfully.");
+
+}
+/* ================= SNAPSHOTS ================= */
+function startSnapshots() {
+
+  const video = document.getElementById("camera");
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+
+  snapInterval = setInterval(() => {
+
+    if (!video.videoWidth) return;
+
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    ctx.drawImage(video, 0, 0);
+
+    snapshots.push({
+      time: new Date().toISOString(),
+      image: canvas.toDataURL("image/jpeg", 0.7)
+    });
+
+  }, 60000);
+}
+
+/* ================= SCORE ================= */
+function calculateScore() {
+
+  let score = 0;
+
+  document.querySelectorAll("input[data-correct]").forEach(q => {
+    if (q.checked) score++;
+  });
+
+  return score;
+}
+
+/* ================= SUBMIT ================= */
+async function submitTest() {
+
+  if (alreadySubmitted) return;
+  alreadySubmitted = true;
+
+  clearInterval(timerInterval);
+  clearInterval(snapInterval);
+
+  if (cameraStream) {
+    cameraStream.getTracks().forEach(t => t.stop());
+clearInterval(autoSaveInterval);
+
+}
+
+  document.exitFullscreen().catch(()=>{});
+
+  const user = JSON.parse(localStorage.getItem("exam_user") || "{}");
+  const score = calculateScore();
+
+  localStorage.setItem(user.email + "_submitted", "true");
+
+  /* ================= GOOGLE SHEETS ================= */
+const questions = [];
+const answers = [];
+const correctAnswers = [];
+const status = [];
+
+document.querySelectorAll(".question").forEach((q, index) => {
+
+  questions.push(q.querySelector("p").innerText);
+
+  const selected = q.querySelector("input[type=radio]:checked");
+  const correct = q.querySelector("input[data-correct]");
+
+  answers.push(selected ? selected.value : "Not Answered");
+  correctAnswers.push(correct.value);
+
+  status.push(
+    selected && selected.hasAttribute("data-correct")
+      ? "Correct"
+      : "Wrong"
+  );
+
+});
+
+const payload = new URLSearchParams({
+
+  name: user.name,
+  email: user.email,
+  designation: user.designation,
+
+  score: score,
+
+  snapshots: JSON.stringify(snapshots),
+
+  questions: JSON.stringify(questions),
+  answers: JSON.stringify(answers),
+  correctAnswers: JSON.stringify(correctAnswers),
+  status: JSON.stringify(status),
+
+  timestamp: new Date().toISOString()
+
+});
+
+ try {
+
+  const response = await fetch(WEB_APP_URL, {
+
+    method: "POST",
+
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+
+    body: payload.toString()
+
+  });
+
+const result = await response.text();
+
+if (result.trim() !== "success") {
+    throw new Error(result);
+}
+
+}
+catch(err){
+
+  alreadySubmitted = false;
+
+  console.error(err);
+
+  alert("Submission failed.\n\n" + err.message);
+
+  return;
+
+}
+
+  /* ================= UI ================= */
+  document.getElementById("testWrapper").style.display = "none";
+  document.getElementById("resultPage").style.display = "flex";
+
+  document.getElementById("scoreCard").innerHTML =
+    `<div class="score">Score: ${score} / 17 </div>`;
+
+  localStorage.setItem(user.email + "_submitted", "true");
+}
+
+/* ================= SAFETY ================= */
+window.addEventListener("beforeunload", (e) => {
+  if (!alreadySubmitted) {
+    e.preventDefault();
+    e.returnValue = "";
+  }
+});
+document.querySelectorAll('.question input[type="radio"]').forEach(radio=>{
+
+    radio.addEventListener("change",function(){
+
+        document.querySelectorAll(
+            `input[name="${this.name}"]`
+        ).forEach(r=>{
+
+            r.parentElement.classList.remove("selected");
+
+        });
+
+        this.parentElement.classList.add("selected");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
